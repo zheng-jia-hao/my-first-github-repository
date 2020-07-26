@@ -1,0 +1,131 @@
+ls 查看当前文件夹下的所有文件
+
+pwd 查看当前文件夹的路径
+
+cd xxx 进入某一个文件夹内
+
+clear 清屏或者使用ctrl+l也可以
+
+mkdir xxx 创建文件夹
+
+touch xxx.html  创建一个文件
+
+rm xxx.html  删除文件
+
+rm xxx -rf 删除文件夹
+
+mv xxx.html sss.html  移动文件，重命名
+
+cat xxx.html  查看文件内容
+
+cd ..  返回上一级目录，用法和winodw类似，但是这里的cd中间需要空格
+--------------------------------------
+
+vim文本编辑器
+
+vim xxx.html  编辑文件,文件不存在则创建
+
+i 进入编辑模式
+
+h j k l 左下上右
+
+Esc + :wq 保存退出
+
+Esc + :q! 不保存退出
+
+---------------------------------------
+
+配置用户名和邮箱，用于表示开发者的信息：
+
+用户名：git config --global user.name "zhengjiahao"
+
+邮箱：git config --global user.email "602596259@qq.com"
+
+后期也能够通过重写上面的代码实现修改配置
+
+基本操作：  
+       1. 右键->Git Bash Here
+       2. git init 初始化仓库
+       3. 创建一个初始化文件 xxx.html
+       4. git add xxx.html  将文件加入到暂缓区
+       5. git commit -m '注释'  提交到仓库
+        
+可以通过 ls -a 查找文件内容
+
+        当出现了：
+            [master (root-commit) 604ccb5] 棣栨浣跨敤git
+            1 file changed, 11 insertions(+)
+            create mode 100644 index.html
+        证明提交成功
+
+
+Git 的三个区域：
+
+1.工作区: 当git init 时创建， 所创建的文件放置在这里
+
+2.暂缓区: 当git add xxx.html 时，将文件添加到暂缓区,这里所做的就是修改等待的文件
+
+3.仓库区: 当git commit -m '注释' 时，将提交到仓库，这里就是文件保存的区域
+
+当修改某个文件再进行提交时，它会在仓库保存，并不会覆盖原本的，它会记录多个,保存文件时，它保存的只是文件的地址
+
+如果需要提交的注释过多，可以git commit直接提交，然后来到一个新页面的时候 按 i 就能编写交多个，然后按Esc + :wq即可提交
+
+常用命令：
+
+git status  查看版本状态
+
+git add -A 添加所有新文件到暂缓区
+
+git commit -m '' 提交修改注释
+
+git diff 查看工作区与暂缓区差异(不显示新增文件)
+
+git diff --cached 查看暂缓区与仓库的差异
+
+git restore --staged xxx.htm  撤销对文件的修改，将文件移除暂缓区
+
+git checkout 抹掉工作区的修改
+
+git log  查看历史记录
+
+git reset --hard 版本号   根据版本号进行回滚
+
+git reflog  查看所有的操作记录
+
+git reset --hard HEAD^  回滚到上个版本
+
+git reset --hard HEAD^^  回滚到上上个版本
+
+删除仓库中的某个文件/文件夹 : git rm --cached xxx -rf
+
+当什么时候退出不了的时候， 通过:q即可
+如果git commit -m写注释如果多写了一个引号或者少写了一个引号，最后给它添加回去敲回车即可
+
+配置文件不让git识别到：
+    先在工作区中添加一个文件，文件名叫做:.gitignore ,在里面配置不想让git发现的文件,通过 /文件名 隐藏
+
+
+分支：
+    创建分支 : git branch xxx
+    查看分支 : git branch
+    切换分支 : git checkout xxx
+    合并分支 : git merge xxx  //合并到主分支
+    删除分支 : git branch -d xxx
+    切换并且创建分支 : git checkout -b xxx
+
+
+本地配置远程仓库的地址:
+    查看使用方法: git remote -h 
+
+    添加远程仓库配置:  
+        1.git remote add origin https://github.com/zheng-jia-hao/my-first-github-repository.git 
+            -remote 时git 的子命令
+            -add 添加
+            -origin 是远程仓库的名称
+            -是远程仓库的地址https://github.com/zheng-jia-hao/my-first-github-repository.git 
+            -换仓库了 ：git remote add 新名称 https://github.com/zheng-jia-hao/新仓库.git 
+        
+        2.git push -u origin master 将本地仓库添加到远程仓库中
+
+        3.最后重新刷新页面即可,就能看见本地文件夹中的内容
